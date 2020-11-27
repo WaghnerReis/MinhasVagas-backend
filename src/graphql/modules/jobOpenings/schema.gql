@@ -1,0 +1,31 @@
+type JobOpening {
+  _id: ID!
+  name: String!
+  nivel: String!
+  contract: String!
+  activitiesAndResponsibilities: String!
+  requirements: String!
+  remuneration: String!
+  company: Company!
+}
+
+input JobOpeningInput {
+  name: String!
+  nivel: String!
+  contract: String!
+  activitiesAndResponsibilities: String!
+  requirements: String!
+  remuneration: String!
+  company: ID!
+}
+
+type Query {
+  jobOpenings: [JobOpening!]!
+  jobOpening(id: ID!): JobOpening!
+}
+
+type Mutation {
+  createJobOpening(data: JobOpeningInput!): JobOpening!
+  updateJobOpening(id: ID!, data: JobOpeningInput!): JobOpening!
+  deleteJobOpening(id: ID!): Boolean
+}
