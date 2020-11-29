@@ -7,7 +7,7 @@ export default {
     },
     Mutation: {
         createCompany: (_, {data}) => Company.create(data),
-        updateCompany: (_, {id, data}) => Company.findOneAndUpdate(id, data, {new: true}),
-        deleteCompany: async (_, {id}) => !!(await Company.findByIdAndDelete(id))
+        updateCompany: (_, {id, data}) => Company.findOneAndUpdate({ _id: id }, data, {new: true}),
+        deleteCompany: async (_, {id}) => !!(await Company.findByIdAndDelete({ _id: id }))
     },
 }
