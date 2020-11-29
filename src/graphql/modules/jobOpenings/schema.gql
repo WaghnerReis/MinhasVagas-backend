@@ -29,3 +29,9 @@ type Mutation {
   updateJobOpening(id: ID!, data: JobOpeningInput!): JobOpening!
   deleteJobOpening(id: ID!): Boolean
 }
+
+type Subscription {
+  jobOpeningCreated: JobOpening!
+  jobOpeningUpdated: JobOpening!
+  jobOpeningDeleted: ID!
+}
