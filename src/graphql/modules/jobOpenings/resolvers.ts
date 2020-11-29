@@ -21,7 +21,7 @@ export default {
             return jobOpening
         },
         updateJobOpening: async (_, {id, data}, {pubSub}) => {
-            const jobOpening = await JobOpening.findOneAndUpdate(id, data, {new: true})
+            const jobOpening = await JobOpening.findOneAndUpdate({ _id: id }, data, {new: true})
 
             pubSub.publish(JOB_OPENING_UPDATED, {
                 jobOpeningUpdated: jobOpening
@@ -30,7 +30,7 @@ export default {
             return jobOpening
         },
         deleteJobOpening: async (_, {id}, {pubSub}) => {
-            const deleted = !!(await JobOpening.findByIdAndDelete(id))
+            const deleted = !!(await JobOpening.findByIdAndDelete({ _id: id }))
 
             pubSub.publish(JOB_OPENING_DELETED, {
                 jobOpeningDeleted: id
